@@ -7,7 +7,7 @@
 整个工程遵循 用户I/O操作复杂性 > 时间复杂度 > 代码可读性 > 空间复杂度 的要求
 
 ## 工程搭建思路
-图书管理系统中，图书管理员操作的读者和图书，故首先创建`Reader`类和`Book`类。  
+图书管理系统中，图书管理员操作的是读者和图书，故首先创建`Reader`类和`Book`类。  
 然而，一个图书馆管理系统不可能只操作一个读者或一本书籍，故创建`ReaderList`与`BookList`类，通过list类中的成员变量`vector<Node>list`将node类与list类联系。  
 在`Reader`类中我们使用成员变量`vector<Book>borrowed_books`描述每一个读者所借的图书。  
 对于读者与书籍数据的存储，我们使用了两个txt文件并通过fstream库中的文件I/O操作函数将存储数据与程序联系起来  
@@ -25,7 +25,7 @@
     1. 在遍历操作中，使用`find_if(iterator begin, iterator end, UnaryPredicate p)`代替for循环，可以自定义回调函数，根据回调函数的返回值来判断是否找到了所需的元素
     2. 在删除操作时使用`erase(first,last)`与`remove_if(iterator begin, iterator end, UnaryPredicate p)`来删除对象，这样的操作减少了一次拷贝构造
     3. 使用`std::any`与函数多态实现了在查找操作可以根据int型的id与string型的name进行查找，减少了用户操作的复杂性
-    4. 对于简单的函数使用lambda表达式，是代码更加清晰
+    4. 对于简单的函数使用lambda表达式，使代码更加清晰
 
 
 
@@ -46,3 +46,6 @@
 - 文件：hello_world
 - 循环变量：i, n, m 等  
 - 模板：T  
+
+---
+我的大作业

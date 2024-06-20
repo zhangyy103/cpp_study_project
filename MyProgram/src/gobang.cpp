@@ -296,6 +296,10 @@ std::pair<int, int>Gobang::get_next_move() {
 }
 
 void Gobang::robot() {
+	std::pair<int, int> best = get_next_move();
+	g_Pos.row = best.first;
+	g_Pos.col = best.second;
+	g_Gobang_Map[g_Pos.row][g_Pos.col] = g_Pos.chess_play;
 	if (judge_winner()) {
 		//绘制完在结束
 		g_IsWin = judge_winner();
@@ -313,10 +317,6 @@ void Gobang::robot() {
 			MessageBox(GetHWnd(), _T("白棋赢了"), _T("游戏结束nefu"), MB_OK);
 		}
 	}
-	std::pair<int, int> best = get_next_move();
-	g_Pos.row = best.first;
-	g_Pos.col = best.second;
-	g_Gobang_Map[g_Pos.row][g_Pos.col] = g_Pos.chess_play;
 	//切换棋手
 	g_Pos.chess_play = (g_Pos.chess_play == black ? white : black);
 }
@@ -471,7 +471,7 @@ void Gobang::gobang() {
 		switch (key) {
 		case 'p': {system("cls"); pvp(); break; }
 		case 'o': {system("cls"); PVRscore = pvr(); break; }
-		case 'i': {system("cls"); rvr(); break; }
+		case 'i': {system("cls"); rvr();g_B_Win = 0;g_W_Win =0; break; }
 		case 'y': {system("cls"); leader_board(); break; }
 		case 'u': {system("cls"); gamer_data_write(); return; break; }
 		default:
